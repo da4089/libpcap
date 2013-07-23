@@ -42,7 +42,7 @@ struct, usually the result of a call to
 .BR pcap_compile() .
 .SH RETURN VALUE
 .B pcap_setfilter()
-returns 0 on success and \-1 on failure.
+returns 0 on success and a negative value on failure.
 If \-1 is returned,
 .B pcap_geterr()
 or
@@ -50,5 +50,9 @@ or
 may be called with
 .I p
 as an argument to fetch or display the error text.
+If \-3 is returned, 
+.I p
+is not yet activated (using 
+.BR pcap_activate() ).
 .SH SEE ALSO
 pcap(3PCAP), pcap_compile(3PCAP), pcap_geterr(3PCAP)

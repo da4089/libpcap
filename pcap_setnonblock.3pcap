@@ -45,10 +45,6 @@ puts a capture handle into ``non-blocking'' mode, or takes it out
 of ``non-blocking'' mode, depending on whether the
 .I nonblock
 argument is non-zero or zero.  It has no effect on ``savefiles''.
-If there is an error, \-1 is returned and
-.I errbuf
-is filled in with an appropriate error message; otherwise, 0 is
-returned.
 In
 ``non-blocking'' mode, an attempt to read from the capture descriptor
 with
@@ -67,6 +63,17 @@ If there is an error, \-1 is returned and
 .I errbuf
 is filled in with an appropriate error message.
 .PP
+.B pcap_setnonblock()
+returns 0 if successful, or a negative value otherwise.
+If \-3 is returned,
+.I p
+has not been activated (using
+.BR pcap_activate() ).
+For other errors, \-1 is returned, and
+.I errbuf
+is filled in with an appropriate error message.
+.PP
+For both functions,
 .I errbuf
 is assumed to be able to hold at least
 .B PCAP_ERRBUF_SIZE
